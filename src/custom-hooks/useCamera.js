@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-
+import { ImageCapture } from "image-capture";
 export const useCamera = () => {
   const [ image, setImage ] = useState(null);
   const [ error, setError ] = useState(null);
@@ -15,17 +15,23 @@ export const useCamera = () => {
       });
       setStream(media);
     } catch(err){
+      console.log(err.message);
       setError(err);
     }
   }
   
   const captureImage = async () => {
-    if(!stream) return;
-    const track = stream.getVideoTracks()[0];
-    const imageCapture = new ImageCapture(track);
-    const photo = await imageCapture.takePhoto();
-    const base64Img = await convert_to_base_64(photo);
-    setImage(base64Img);
+    try{
+      if(!stream) return;
+      const track = stream.getVideoTracks()[0];
+      const imageCapture = new ImageCapture(track);
+      const photo = await imageCapture.takePhoto();
+      const base64Img = await convert_to_base_64(photo);
+      setImage(base64Img);
+    } catch(err){
+      console.log(err.message);
+      setError(err);
+    }
   }
   
   const convert_to_base_64 = async (blob) => {

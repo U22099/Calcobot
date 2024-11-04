@@ -6,24 +6,21 @@ function App() {
   
   useEffect(() => {
     requestCamera();
-  });
+  }, []);
   useEffect(() => {
     if(stream && vid.current){
       vid.current.srcObject = stream;
     }
   }, [stream, vid.current]);
-  useEffect(() => {
-    if(error){
-      console.log(error);
-    }
-  }, [error]);
   return (
-    <>
+    <div className="p-5 w-[90vw] h-full flex flex-col gap-3 mx-auto mt-10">
       <video ref={vid} muted autoPlay/>
-      <button onClick={() => captureImage()}> Capture Image</button>
+      <button className="border-slate-300 border-2 shadow-md text-[gold] bg-blue" onClick={() => {
+        captureImage();
+      }}> Capture Image</button>
       {image && <img src={image}/>}
       {error && <p>An error occured</p>}
-    </>
+    </div>
   )
 }
 
