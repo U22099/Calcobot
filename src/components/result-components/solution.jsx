@@ -1,5 +1,6 @@
 import { useNavigate } from "react-router-dom";
-import { markdownToHtml } from "../../utils/markdown-to-html";
+import markdownToHtml from "../../utils/markdown-to-html";
+
 export default function Solution({ solution }){
   const convertMarkdown = () => {
     return markdownToHtml(solution);
