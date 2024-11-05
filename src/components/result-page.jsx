@@ -4,9 +4,10 @@ import Solution from "./result-components/solution";
 
 export default function ResultPage(){
   const [ showSolution, setShowSolution ] = useState(false);
+  const [ solution, setSolution ] = useState("");
   return(
     <div>
-      {showSolution ? <Solution setShowSolution={setShowSolution} /> : <Image setShowSolution={setShowSolution} />}
+      {showSolution ? <Solution solution={solution} /> : <Image setShowSolution={setShowSolution} setSolution={setSolution} />}
     </div>
   )
 }

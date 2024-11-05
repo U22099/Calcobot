@@ -2,16 +2,17 @@ import { useData } from "../../store";
 import { useNavigate } from "react-router-dom";
 import { useState } from "react";
 import { FaSpinner } from "react-icons/fa6";
+import { getMathsSolution } from "../../utils/getMathsSolution";
 
-export default function Image({ setShowSolution }){
+export default function Image({ setShowSolution, setSolution }){
   const navigate = useNavigate();
   const data = useData(state => state.data);
   const [ loading, setLoading ] = useState();
   const fetch = async () => {
     setLoading(true);
-    
-    
-    //setShowSolution(true);
+    const solution = await getMathsSolution();
+    setSolution(solution);
+    setShowSolution(true);
   }
   
   return(
