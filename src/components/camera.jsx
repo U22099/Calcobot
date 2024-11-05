@@ -1,10 +1,13 @@
 import { useState, useEffect, useRef } from 'react'
 import { useCamera } from "../custom-hooks/useCamera";
+import { FaCamera } from "react-icons/fa6";
 
 function Camera() {
   const { image, stream, error, captureImage, requestCamera } = useCamera();
   const [ initVid, setInitVid ] = useState(true);
   const vid = useRef();
+  
+  const [ show, setShow ] = useState(false);
   
   const startCam = async () => {
     if (stream && vid.current) {
@@ -18,29 +21,28 @@ function Camera() {
 
   useEffect(() => {
     requestCamera();
+    setTimeout(() => {
+      setShow(true);
+    }, 1000);
   }, []);
-  useEffect(() => {
-    if (stream && vid.current) {
-      
-    }
-  }, [stream, vid.current]);
   return (
     <>
-    <div className="p-5 w-[90vw] h-full flex flex-col gap-3 mx-auto mt-10 bg-black">
-      <video ref={vid} playsInline webkit-playsinline className="object-cover"/>
-      <button className="bg-cyan-600 shadow-lg text-[gold] p-4 rounded-lg font-bold shadow-emerald-400  active:shadow-none" onClick={() => captureImage()}> Capture Image</button>
-      {image && <img src={image}/>}
-      {error && <p className="text-red-600">An error occured</p>}
-    </div>
-    {initVid && <InitButton start={startCam} />}
+      <div className="p-5 w-full min-h-[100vh] flex flex-col gap-4 mx-auto py-5 bg-black">
+        <video ref={vid} playsInline={true} webkit-playsinline={true} className="rounded-md p-1 border-2 border-white h-[75vh]"/>
+        <div className="bg-white fill-black font-bold p-6 rounded-full shadow-sm active:shadow-none active:scale-95 mx-auto text-2xl" onClick={() => captureImage()}>
+          <FaCamera/>
+        </div>
+        {error && <p className="text-red-600">An error occured</p>}
+      </div>
+      {initVid && <InitButton start={startCam}  show={show}/>}
     </>
   )
 }
 
-const InitButton = ({ start }) => {
+const InitButton = ({ start, show }) => {
   return(
    <div className="fixed h-full w-full top-0 flex justify-center items-center bg-black">
-     <button className="bg-cyan-600 shadow-lg text-[gold] p-4 rounded-lg font-bold shadow-emerald-500 active:shadow-none" onClick={async () => await start()}>Start Camera</button>
+     {show && <button className="bg-white text-black text-xl font-bold p-2 rounded-lg shadow-sm active:shadow-none active:scale-95 animate-scale-in" onClick={async () => await start()}>Start App</button>}
    </div> 
   )
 }

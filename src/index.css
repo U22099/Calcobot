@@ -1,5 +1,29 @@
+body{
+  margin: 0px;
+  padding: 0px;
+}
+
+@keyframes scaleIn{
+  from{
+    transform: scale(0);
+  }
+  to{
+    transform: scale(1);
+  }
+}
+
 @tailwind base;
 
 @tailwind components;
 
 @tailwind utilities;
+
+*{
+  @apply font-mono antialiased transition ease-in
+}
+.btn{
+  @apply bg-indigo-700 shadow-purple-600/60 shadow-xl text-white p-4 rounded-xl font-bold active:shadow-none transition ease-in-out active:scale-95
+}
+.background{
+  @apply bg-gradient-to-tr from-blue-950 to-violet-800
+}

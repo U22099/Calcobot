@@ -4,7 +4,11 @@ export default {
     "./src/**/*.{html,js,ts,jsx,tsx}",
   ],
   theme: {
-    extend: {},
+    extend: {
+      animation: {
+        "scale-in": "scaleIn .6s linear"
+      }
+    },
   },
   plugins: [],
 }
