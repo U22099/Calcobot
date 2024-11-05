@@ -1,5 +1,5 @@
 import { useState, useEffect, useRef } from 'react'
-import { useCamera } from "./custom-hooks/useCamera";
+import { useCamera } from "../custom-hooks/useCamera";
 
 function Camera() {
   const { image, stream, error, captureImage, requestCamera } = useCamera();
