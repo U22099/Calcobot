@@ -3,7 +3,7 @@ import Image from "./result-components/image-submit-page";
 import Solution from "./result-components/solution";
 
 export default function ResultPage(){
-  const [ showSolution, setShowSolution ] = useState(false);
+  const [ showSolution, setShowSolution ] = useState(true);
   const [ solution, setSolution ] = useState("");
   return(
     <div>
