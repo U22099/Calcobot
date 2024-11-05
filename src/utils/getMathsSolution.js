@@ -11,15 +11,13 @@ export async function getMathsSolution(file) {
   });
 
   // Defines the prompt for the summarization task.
-  const prompt = `Solve the mathematical question with step by step guide and workings in the image data below: `;
+  const prompt = "Solve the mathematical question with step by step guide and workings in the image data below: ";
 
   // Asynchronous function to convert a file to a Generative AI compatible format.
   async function fileToGenerativePart(file) {
-    // Converts the file to base64 if it's a new file, otherwise uses the existing base64 representation.
-    const base64 = await convert_to_base_64(file);
     // Extracts data and mime type from base64 string.
-    const data = base64.split(",")[1];
-    const mimeType = base64.split(",")[0].split(";")[0].split(":")[1];
+    const data = file.split(",")[1];
+    const mimeType = file.split(",")[0].split(";")[0].split(":")[1];
     // Returns the file data in the format required by Google Generative AI.
     return {
       inlineData: {
@@ -40,16 +38,7 @@ export async function getMathsSolution(file) {
     return response;
   } catch (e) {
     console.log("Error occured");
-    console.log(e);
+    console.log(e.message);
     return false;
   }
-}
-
-const convert_to_base_64 = async (blob) => {
-  return new Promise((resolve, reject) => {
-    const reader = new FileReader();
-    reader.onload = () => resolve(reader.result);
-    reader.onerror = reject;
-    reader.readAsDataURL(blob);
-  })
 }
