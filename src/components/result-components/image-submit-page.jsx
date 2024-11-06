@@ -10,6 +10,7 @@ export default function Image({ setShowSolution, setSolution }){
   const [ loading, setLoading ] = useState();
   const fetch = async () => {
     setLoading(true);
+    console.log(data);
     const solution = await getMathsSolution(data);
     setSolution(solution);
     setShowSolution(true);
