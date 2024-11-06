@@ -2,7 +2,7 @@ import { useData } from "../../store";
 import { useNavigate } from "react-router-dom";
 import { useState } from "react";
 import { ImSpinner3 } from "react-icons/im";
-import { getMathsSolution } from "../../utils/getMathsSolution";
+import getMathsSolution from "../../utils/getMathsSolution";
 
 export default function Image({ setShowSolution, setSolution }){
   const navigate = useNavigate();
