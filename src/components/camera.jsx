@@ -52,7 +52,7 @@ const InitButton = ({ error, start, show }) => {
   return(
    <div className="fixed h-full w-full top-0 flex justify-center items-center bg-black flex flex-col gap-2">
      <section className="flex flex-col gap-2 text-center mx-auto justify-start items-center text-white">
-       <img src="logo.svg"/>
+       <img src="logo.jpg" className="rounded-md w-16 h-16 object-cover"/>
        <header>Calcobot</header>
        <p>AI Maths and Calculus Solver</p>
      </section>
