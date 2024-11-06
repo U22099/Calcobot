@@ -1,5 +1,6 @@
 import { useEffect, useState } from "react";
 import { ImageCapture } from "image-capture";
+
 export const useCamera = () => {
   const [ image, setImage ] = useState(null);
   const [ error, setError ] = useState(null);

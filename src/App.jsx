@@ -2,7 +2,6 @@ import Camera from "./components/camera";
 import ResultPage from "./components/result-page";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 function App() {
-  console.log("App")
   return (
     <BrowserRouter basename="/">
       <Routes>
