@@ -21,8 +21,8 @@ export default function Solution({ solution }){
   const [copied, setCopied] = useState(false);
   const [loading, setLoading] = useState(false)
   const data = useData(state => state.data);
-  const navigate = useNavigation();
-  const [htmlText, setHtmlText] = markdownToHtml("**hello**");
+  const navigate = useNavigate();
+  const [htmlText, setHtmlText] = useState(markdownToHtml("**Hey**"));
   const text = () => markdownToText(solution);
   const copy = () => {
     copyToClipboard(text());

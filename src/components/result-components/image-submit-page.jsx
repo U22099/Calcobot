@@ -7,7 +7,7 @@ import getMathsSolution from "../../utils/getMathsSolution";
 export default function Image({ setShowSolution, setSolution }){
   const navigate = useNavigate();
   const data = useData(state => state.data);
-  const [ loading, setLoading ] = useState();
+  const [ loading, setLoading ] = useState(false);
   const fetch = async () => {
     setLoading(true);
     console.log(data);

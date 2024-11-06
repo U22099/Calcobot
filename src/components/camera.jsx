@@ -5,6 +5,7 @@ import { FaCamera } from "react-icons/fa6";
 import { useData } from "../store";
 
 function Camera() {
+  console.log("Camera")
   const { image, stream, error, captureImage, requestCamera } = useCamera();
   const setData = useData(state => state.setData);
   const navigate = useNavigate();

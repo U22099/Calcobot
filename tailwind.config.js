@@ -7,9 +7,8 @@ export default {
     extend: {
       animation: {
         "scale-in": "scaleIn .6s linear"
-      }
+      },
     },
   },
   plugins: [],
 }
-
