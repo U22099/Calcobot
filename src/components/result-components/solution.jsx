@@ -1,7 +1,7 @@
 import { useNavigate } from "react-router-dom";
 import { useState } from "react";
 import markdownToHtml from "../../utils/markdown-to-html";
-import markdownToText from "../../utils/markdown-to-txt";
+import htmlToText from "../../utils/html-to-txt";
 import copyToClipboard from "../../utils/copy-to-clipboard";
 import textToSpeech from "../../utils/text-to-speech";
 import textToFile from "../../utils/text-to-file";
@@ -22,8 +22,8 @@ export default function Solution({ solution }){
   const [loading, setLoading] = useState(false)
   const data = useData(state => state.data);
   const navigate = useNavigate();
-  const [htmlText, setHtmlText] = useState(markdownToHtml("**Hey**"));
-  const text = () => markdownToText(solution);
+  const [htmlText, setHtmlText] = useState(markdownToHtml(solution));
+  const text = () => htmlToText(htmlText);
   const copy = () => {
     copyToClipboard(text());
     setCopied(true);
@@ -42,7 +42,7 @@ export default function Solution({ solution }){
   const refresh = async () => {
     setLoading(true)
     const markdown = await getMathsSolution(data);
-    setHtmlText(markdownToText(markdown));
+    setHtmlText(markdownToHtml(markdown));
     setLoading(false);
   }
   return (

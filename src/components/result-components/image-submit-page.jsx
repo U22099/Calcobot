@@ -1,7 +1,7 @@
 import { useData } from "../../store";
 import { useNavigate } from "react-router-dom";
 import { useState } from "react";
-import { ImSpinner3 } from "react-icons/im";
+import { ImSpinner2 } from "react-icons/im";
 import getMathsSolution from "../../utils/getMathsSolution";
 
 export default function Image({ setShowSolution, setSolution }){
@@ -22,7 +22,7 @@ export default function Image({ setShowSolution, setSolution }){
       <div className="flex gap-2 justify-between items-center w-full">
         <button className="flex justify-center items-center text-center bg-white text-black fill-black font-bold py-2 px-4 rounded shadow-sm active:shadow-none active:scale-95 mx-auto text-lg w-full" onClick={() => navigate("/")}>Retake</button>
         <button className="flex justify-center items-center text-center bg-white text-black fill-black font-bold py-2 px-4 rounded shadow-sm active:shadow-none active:scale-95 mx-auto text-lg w-full" onClick={async () => await fetch()}>
-        {loading ? <ImSpinner3 className="animate-spin scale-105"/> : "Submit"}
+        {loading ? <ImSpinner2 className="animate-spin"/> : "Submit"}
         </button>
       </div>
     </div>
