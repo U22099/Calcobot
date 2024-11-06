@@ -1,7 +1,7 @@
 // Imports necessary modules for Google Generative AI, base64 conversion, data storage, and toast messages.
 import { GoogleGenerativeAI } from "@google/generative-ai";
 // Asynchronous function to generate a file summary using Google Gemini.
-export async function getMathsSolution(file) {
+export default async function getMathsSolution(file) {
   // Creates a new Google Generative AI instance.
   const genAI = new GoogleGenerativeAI(import.meta.env.VITE_API_KEY);
   // Gets the Gemini 1.5 Flash model with summarization instructions.
