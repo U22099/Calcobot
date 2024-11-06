@@ -50,7 +50,12 @@ function Camera() {
 
 const InitButton = ({ error, start, show }) => {
   return(
-   <div className="fixed h-full w-full top-0 flex justify-center items-center bg-black">
+   <div className="fixed h-full w-full top-0 flex justify-center items-center bg-black flex flex-col gap-2">
+     <section className="flex flex-col gap-2 text-center mx-auto justify-start items-center text-white">
+       <img src="logo.svg"/>
+       <header>Calcobot</header>
+       <p>AI Maths and Calculus Solver</p>
+     </section>
      {(show&&!error) && <button className="bg-white text-black text-xl font-bold p-2 rounded-lg shadow-sm active:shadow-none active:scale-95 animate-scale-in" onClick={async () => await start()}>Start App</button>}
      {error && <p className="text-red-600">Permission Denied</p>}
    </div> 
