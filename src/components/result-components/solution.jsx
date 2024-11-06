@@ -35,7 +35,7 @@ export default function Solution({ solution }){
       setSpeaking(false);
       return;
     };
-    textToSpeech(text()); 
+    textToSpeech(text(), setSpeaking); 
     setSpeaking(true);
   }
   const download = () => textToFile(text(), "Maths-Solution")
@@ -46,28 +46,29 @@ export default function Solution({ solution }){
     setLoading(false);
   }
   return (
-    <div className="bg-black py-10 px-2 gap-2 flex flex-col min-h-[100vh]">
-      <header>
-        <h1 className="text-2xl font-bold text-white">Calcobot</h1>
+    <div className="bg-white dark:bg-black py-10 px-2 gap-2 flex flex-col min-h-[100vh]">
+      <header className="flex gap-2 items-center">
+         <img src="logo.jpg" className="rounded-md w-16 h-16 object-cover"/>
+        <h1 className="text-2xl font-bold dark:text-white">Calcobot</h1>
       </header>
       <section className="flex gap-2">
-        <div className="flex justify-center items-center text-center bg-white fill-black text-2xl p-2 rounded shadow-sm active:shadow-none active:scale-95" onClick={() => navigate("/")}>
-          <IoCaretBackSharp />
+        <div className="flex justify-center items-center text-center bg-black dark:bg-white text-2xl p-2 rounded shadow-sm active:shadow-none active:scale-95" onClick={() => navigate("/")}>
+          <IoCaretBackSharp className="fill-white dark:fill-black"/>
         </div>
-        <div className="flex justify-center items-center text-center bg-white fill-black text-2xl p-2 rounded shadow-sm active:shadow-none active:scale-95" onClick={() => refresh()}>
-          <RiRefreshLine className={loading&&"animate-spin"}/>
+        <div className="flex justify-center items-center text-center bg-black dark:bg-white text-2xl p-2 rounded shadow-sm active:shadow-none active:scale-95" onClick={() => refresh()}>
+          <RiRefreshLine className={"fill-white dark:fill-black text-white dark:text-black outline-white dark:outline-black" + (loading&&" animate-spin-fast")}/>
         </div>
-        <div className="flex justify-center items-center text-center bg-white fill-black text-2xl p-2 rounded shadow-sm active:shadow-none active:scale-95" onClick={() => copy()}>
-          {copied ? <IoCheckmarkDoneOutline /> : <IoCopyOutline />}
+        <div className="flex justify-center items-center text-center bg-black dark:bg-white text-2xl p-2 rounded shadow-sm active:shadow-none active:scale-95" onClick={() => copy()}>
+          {copied ? <IoCheckmarkDoneOutline className="fill-white dark:fill-black text-white dark:text-black"/> : <IoCopyOutline className="fill-white dark:fill-black text-white dark:text-black"/>}
         </div>
-        <div className="flex justify-center items-center text-center bg-white fill-black text-2xl p-2 rounded shadow-sm active:shadow-none active:scale-95" onClick={() => speak()}>
-          {speaking ? <FaStop /> : <HiMiniSpeakerWave />}
+        <div className="flex justify-center items-center text-center bg-black dark:bg-white text-2xl p-2 rounded shadow-sm active:shadow-none active:scale-95" onClick={() => speak()}>
+          {speaking ? <FaStop className="fill-white dark:fill-black"/> : <HiMiniSpeakerWave className="fill-white dark:fill-black" />}
         </div>
-        <div className="flex justify-center items-center text-center bg-white fill-black text-2xl p-2 rounded shadow-sm active:shadow-none active:scale-95" onClick={() => download()}>
-          <IoDownloadOutline />
+        <div className="flex justify-center items-center text-center bg-black dark:bg-white text-2xl p-2 rounded shadow-sm active:shadow-none active:scale-95" onClick={() => download()}>
+          <IoDownloadOutline className="fill-white dark:fill-black text-white dark:text-black"/>
         </div>
       </section>
-        <section className="bg-white p-2 rounded-md text-lg h-fit w-full min-h-20 display" dangerouslySetInnerHTML={{
+        <section className="bg-black dark:bg-white p-2 rounded-md text-lg h-fit w-full min-h-20 text-white dark:text-black" dangerouslySetInnerHTML={{
         __html: htmlText
       }}>
       </section>

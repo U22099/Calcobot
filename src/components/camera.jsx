@@ -27,7 +27,7 @@ function Camera() {
     requestCamera();
     setTimeout(() => {
       setShow(true);
-    }, 1000);
+    }, 700);
   }, []);
   useEffect(() => {
     if(image){
@@ -37,10 +37,10 @@ function Camera() {
   }, [image]);
   return (
     <>
-      <div className="p-5 w-full min-h-[100vh] flex flex-col gap-4 mx-auto py-5 bg-black">
-        <video ref={vid} playsInline={true} webkit-playsinline={true} className="rounded-md p-1 border-2 border-white h-[75vh]"/>
-        <div className="bg-white fill-black font-bold p-6 rounded-full shadow-sm active:shadow-none active:scale-95 mx-auto text-2xl" onClick={() => captureImage()}>
-          <FaCamera/>
+      <div className="p-5 w-full min-h-[100vh] flex flex-col gap-4 mx-auto py-5 dark:bg-black">
+        <video ref={vid} playsInline={true} webkit-playsinline={true} className="rounded-md p-1 border-2 border-black dark:border-white h-[75vh]"/>
+        <div className="bg-black dark:bg-white font-bold p-6 rounded-full shadow-sm active:shadow-none active:scale-95 mx-auto text-2xl" onClick={() => captureImage()}>
+          <FaCamera className="fill-white dark:fill-black "/>
         </div>
       </div>
       {initVid && <InitButton error={error} start={startCam}  show={show}/>}
@@ -50,13 +50,13 @@ function Camera() {
 
 const InitButton = ({ error, start, show }) => {
   return(
-   <div className="fixed h-full w-full top-0 flex justify-center items-center bg-black flex flex-col gap-2">
-     <section className="flex flex-col gap-2 text-center mx-auto justify-start items-center text-white">
+   <div className="fixed h-full w-full top-0 flex justify-center items-center bg-white dark:bg-black flex flex-col gap-2">
+     <section className="flex flex-col gap-2 text-center mx-auto justify-start items-center dark:text-white">
        <img src="logo.jpg" className="rounded-md w-16 h-16 object-cover"/>
-       <header>Calcobot</header>
+       <header className="text-2xl">Calcobot</header>
        <p>AI Maths and Calculus Solver</p>
      </section>
-     {(show&&!error) && <button className="bg-white text-black text-xl font-bold p-2 rounded-lg shadow-sm active:shadow-none active:scale-95 animate-scale-in" onClick={async () => await start()}>Start App</button>}
+     {(show&&!error) && <button className="bg-black dark:bg-white text-white dark:text-black text-xl font-bold p-2 rounded-lg shadow-sm active:shadow-none active:scale-95 animate-scale-in" onClick={async () => await start()}>Start App</button>}
      {error && <p className="text-red-600">Permission Denied</p>}
    </div> 
   )

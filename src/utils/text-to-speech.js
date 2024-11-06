@@ -1,5 +1,5 @@
 // Function to convert text to speech using the browser's Text-to-Speech API.
-export default function textToSpeech(text) {
+export default function textToSpeech(text, setSpeaking) {
   // Gets the speech synthesis object, using window.speechSynthesis as a fallback.
   const speech = speechSynthesis || window.speechSynthesis;
   // If no text is provided, cancel any ongoing speech synthesis.
@@ -7,6 +7,9 @@ export default function textToSpeech(text) {
     speech.cancel(); // Cancels any currently speaking utterance.
   } else {
     speech.cancel(); // Cancels any currently speaking utterance.
+    speech.onend = () => {
+      setSpeaking(false);
+    }
     // Creates a new SpeechSynthesisUtterance object.
     const utterance = new SpeechSynthesisUtterance();
     utterance.text = text; // Sets the text for the utterance.

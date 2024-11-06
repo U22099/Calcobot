@@ -6,7 +6,8 @@ export default {
   theme: {
     extend: {
       animation: {
-        "scale-in": "scaleIn .6s linear"
+        "scale-in": "scaleIn .6s linear",
+        "spin-fast": "spin .3s linear infinite"
       },
     },
   },
