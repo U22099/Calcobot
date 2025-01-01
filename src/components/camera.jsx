@@ -50,7 +50,7 @@ function Camera() {
     <>
       <div className="p-5 w-full min-h-[100vh] flex flex-col gap-2 mx-auto py-5 dark:bg-black">
         <video ref={vid} playsInline={true} webkit-playsinline={true} className="rounded-md p-1 border-2 border-black dark:border-white h-[75vh]"/>
-        <label htmlFor="file-input" className="bg-black dark:bg-white font-bold py-2 px-6 w-full mx-2 rounded shadow-md active:shadow-none active:scale-95 mx-auto text-white dark:text-black">
+        <label htmlFor="file-input" className="bg-black dark:bg-white font-bold py-2 px-6 w-full mx-2 rounded shadow-md active:shadow-none active:scale-95 mx-auto text-white dark:text-black flex justify-center items-center">
           Choose from file
           <input type="file" accept=".jpeg, .png, .jpg" hidden id="file-input" onChange={fileImage}/>
         </label>
