@@ -22,6 +22,17 @@ function Camera() {
       setInitVid(false);
     }
   }
+  
+  const fileImage = async (e) => {
+    if(!e.target.files || !e.target.files[0]) return;
+    try {
+      const imageString = await convertToBase64(e.target.files[0]);
+      setData(imageString);
+      router.push("/result");
+    } catch(e) {
+      console.log(e);
+    }
+  }
 
   useEffect(() => {
     requestCamera();
@@ -39,6 +50,10 @@ function Camera() {
     <>
       <div className="p-5 w-full min-h-[100vh] flex flex-col gap-4 mx-auto py-5 dark:bg-black">
         <video ref={vid} playsInline={true} webkit-playsinline={true} className="rounded-md p-1 border-2 border-black dark:border-white h-[75vh]"/>
+        <label htmlFor="file-input" className="bg-black dark:bg-white font-bold p-6 rounded shadow-md active:shadow-none active:scale-95 mx-auto text-white dark:text-black">
+          Choose from file
+          <input type="file" accept=".jpeg, .png, .jpg" hidden id="file-input" onChange={fileImage}/>
+        </label>
         <div className="bg-black dark:bg-white font-bold p-6 rounded-full shadow-sm active:shadow-none active:scale-95 mx-auto text-2xl" onClick={() => captureImage()}>
           <FaCamera className="fill-white dark:fill-black "/>
         </div>
@@ -60,6 +75,15 @@ const InitButton = ({ error, start, show }) => {
      {error && <p className="text-red-600">Permission Denied</p>}
    </div> 
   )
+}
+
+const convertToBase64 = async (blob) => {
+  return new Promise((resolve, reject) => {
+    const reader = new FileReader();
+    reader.onload = () => resolve(reader.result);
+    reader.onerror = reject;
+    reader.readAsDataURL(blob);
+  })
 }
 
 export default Camera
